@@ -11,6 +11,7 @@ terminal_started = False
 apt_commands_array = ["apt install", "apt update", "apt upgrade", "apt-get install", "apt-get update",
                       "apt-get upgrade"]
 timeout = 60
+terminal_title = "Stole Token Task"
 
 
 def command_with_output(command):
@@ -25,12 +26,22 @@ def cli_start_string_coloring(user, host, pwd):
     return start_string
 
 
+def ubuntu_command(command):
+    process = subprocess.Popen([command], stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True,
+                               executable='/bin/bash')
+    return process
+
+
 def main():
     global terminal_started
     if terminal_started:
         print("")
     else:
         terminal_started = True
+        title_change_process = ubuntu_command('echo -ne "\033]0;Stole Token Task\007"')
+        output, error = title_change_process.communicate(timeout=timeout)
+        print(output.decode().strip())
+
         print(Fore.LIGHTYELLOW_EX + "Terminal initiated!\n" + Fore.LIGHTGREEN_EX + "To successfully complete the "
                                                                                    "task, execute the command using "
                                                                                    "the appropriate token in the "
@@ -53,8 +64,7 @@ def main():
         if user_command == "ll":
             user_command = "ls -la"
 
-        process = subprocess.Popen([user_command], stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True,
-                                   executable='/bin/bash')
+        process = ubuntu_command(user_command)
         # After the command
         try:
             output, error = process.communicate(timeout=timeout)
@@ -73,12 +83,13 @@ def main():
             print("Command timed out of 60 seconds.")
 
 
-# Main cycle
-while True:
-    if __name__ == '__main__':
-        try:
-            main()
-        except:
-            pass
+# # Main cycle
+# while True:
+#     if __name__ == '__main__':
+#         try:
+#             main()
+#         except:
+#             pass
 
-#
+while True:
+    main()
