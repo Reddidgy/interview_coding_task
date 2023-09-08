@@ -17,6 +17,8 @@ RUN pip3 install -r requirements.txt
 RUN ./ttyd_install.sh
 RUN rm requirements.txt ttyd_install.sh
 
+RUN useradd testuser -p 1234567
+
 ## Replace the TG_TOKEN value in tg_ubuntu.py with the value of TGBOT_TOKEN environment variable
 #RUN sed -i 's/TG_TOKEN/'"$TGBOT_TOKEN"'/g' tg_ubuntu.py
 

@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker build --no-cache -t my_terminal .
+docker build -t my_terminal .
