@@ -20,6 +20,7 @@ It's a counterfeit token, so there's no need to worry; it resembles a Telegram t
 ## To start
 - `./build.sh`
 - `./run.sh`
+- go to `127.0.0.1:27014` with testuser:qwer1234
 
 ## To rebuild
 - `/rebuild.sh`

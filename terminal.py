@@ -83,13 +83,13 @@ def main():
             print("Command timed out of 60 seconds.")
 
 
-# # Main cycle
-# while True:
-#     if __name__ == '__main__':
-#         try:
-#             main()
-#         except:
-#             pass
-
+# Main cycle
 while True:
-    main()
+    if __name__ == '__main__':
+        try:
+            main()
+        except:
+            pass
+
+# while True:
+#     main()
