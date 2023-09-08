@@ -70,7 +70,7 @@ def main():
                     print(output.decode().strip())
         except subprocess.TimeoutExpired:
             process.kill()  # Kill the process if it times out
-            print("Command timed out of 20 seconds.")
+            print("Command timed out of 60 seconds.")
 
 
 # Main cycle
