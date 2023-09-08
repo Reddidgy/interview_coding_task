@@ -23,4 +23,4 @@ RUN useradd testuser -p 1234567
 #RUN sed -i 's/TG_TOKEN/'"$TGBOT_TOKEN"'/g' tg_ubuntu.py
 
 # Set the default command to run the Python script
-CMD ["ttyd", "-c", "testuser:qwer1234", "python3", "terminal.py"]
+CMD ["ttyd", "-c", "testuser:qwer1234","-t", "rendererType=dom", "python3", "terminal.py"]
