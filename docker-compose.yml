@@ -1,7 +1,6 @@
 version: '3.8'
 services:
   app:
-    image: 'my_terminal'
     container_name: 'my_terminal'
     build:
       context: .
