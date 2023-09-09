@@ -1,6 +1,6 @@
 FROM ubuntu:latest
 
-RUN useradd -u 1050 -m testuser
+RUN useradd -u 1000 -m testuser
 
 WORKDIR /app
 
