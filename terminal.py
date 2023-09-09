@@ -12,6 +12,9 @@ apt_commands_array = ["apt install", "apt update", "apt upgrade", "apt-get insta
                       "apt-get upgrade"]
 timeout = 60
 terminal_title = "Stole Token Task"
+sensitive_info_message = "\nSensitive information is securely protected. Please attempt an alternative approach.\n"
+variables_protection_message = ("\nUtilizing variables in this context is restricted. Kindly employ the actual token "
+                                "value instead.\n")
 
 
 def command_with_output(command):
@@ -64,6 +67,10 @@ def main():
         if user_command == "ll":
             user_command = "ls -la"
 
+        if "app.py" in user_command and "$" in user_command:
+            print(Fore.LIGHTRED_EX + variables_protection_message)
+            user_command = ""
+
         process = ubuntu_command(user_command)
         # After the command
         try:
@@ -72,7 +79,7 @@ def main():
                 print(error.decode().strip())
             else:
                 if TOKEN in output.decode():
-                    print(f'Forbidennicht!11 Sensitive information!')
+                    print(Fore.LIGHTRED_EX + sensitive_info_message)
                 elif user_command.startswith('cd '):
                     new_dir = user_command.split(' ')[1]
                     os.chdir(new_dir)
@@ -91,5 +98,5 @@ while True:
         except:
             pass
 
-# while True:
+# while True: # todo: return good cycle
 #     main()
