@@ -64,8 +64,8 @@ def main():
                 if apt_command in user_command:
                     user_command += " -y"
 
-        if user_command == "ll":
-            user_command = "ls -la"
+        if "ll" in user_command:
+            user_command = user_command.replace("ll", "ls -la")
 
         if "app.py" in user_command and "$" in user_command:
             print(Fore.LIGHTRED_EX + variables_protection_message)
