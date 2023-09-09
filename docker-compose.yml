@@ -2,7 +2,7 @@ version: '3.8'
 services:
   app:
     container_name: 'my_stage_terminal' # todo: change to my_terminal when you will merge it
-    user: 1000
+    user: "1000"
     build:
       context: .
       dockerfile: Dockerfile
