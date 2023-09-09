@@ -2,11 +2,12 @@ version: '3.8'
 services:
   app:
     container_name: 'my_stage_terminal' # todo: change to my_terminal when you will merge it
+    user: testuser
     build:
       context: .
       dockerfile: Dockerfile
     restart: unless-stopped
-    user: testuser
+
     ports:
       - '27015:7681'  # todo: change to 27014 when will merge to master
     volumes:
