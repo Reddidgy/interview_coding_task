@@ -10,5 +10,5 @@ services:
     ports:
       - '27014:7681'
     volumes:
-      - ./app:/app
+      - ./app/:/app
     command: "ttyd -c testuser:qwer1234 -t rendererType=dom python3 /app/terminal.py"
