@@ -9,6 +9,6 @@ services:
     user: testuser
     ports:
       - '27015:7681'  # todo: change to 27014 when will merge to master
-    volumes:
-      - ./userspace/:/app/userspace/
+    #volumes:
+    #  - ./userspace/:/app/userspace/
     command: "ttyd -c testuser:qwer1234 -t rendererType=dom python3 terminal.py"
