@@ -6,3 +6,4 @@ if [ "$1" == "--no-cache" ]; then
 else
   docker build -t interview_coding_task_app .
 fi
+

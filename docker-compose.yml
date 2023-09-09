@@ -1,22 +1,12 @@
 version: '3.8'
 services:
   app:
-    container_name: 'my_stage_terminal' # todo: change to my_terminal when you will merge it
+    container_name: 'my_terminal'
     user: "testuser"
     build:
       context: .
       dockerfile: Dockerfile
     restart: unless-stopped
     ports:
-      - '27015:7681'  # todo: change to 27014 when will merge to master
-    #command: "ttyd -c testuser:qwer1234 -t rendererType=dom python3 terminal.py"
-    volumes:
-      - ./userfolder:/var/tmp/app
-    command: "ls -la"
-
-
-
-
-    # tty: true  # Allocate a pseudo-TTY to the container for an interactive session
-    # stdin_open: true  # Keep STDIN open for interactive use
-
+      - '27014:7681'
+    command: "ttyd -c testuser:qwer1234 -t rendererType=dom python3 terminal.py"
