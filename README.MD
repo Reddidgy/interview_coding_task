@@ -10,20 +10,22 @@ Challenging is getting the token to run app.py with the correct one using comman
 python3 app.py --token=XXXXXXXXXXXXXXXXXX
 ```
 
-### About env and token in there
+### About .env and token there
 It's a counterfeit token, so there's no need to worry; it resembles a Telegram token. I only required it to streamline the deployment process without involving additional business matters.
 
-## Requirements
+## For local run
+
+Requirements
 - Docker
 - Docker-compose
 
-## To start
+To start
 - `./build.sh`
 - `./run.sh`
-- go to `127.0.0.1:27014` with testuser:qwer1234
+- go to [http://127.0.0.1:27014](http://127.0.0.1:27014) with `testuser:qwer1234`
 
-## To rebuild
+To rebuild
 - `/rebuild.sh`
 
-## To re-run
+To re-run without rebuild
 - `/rerun.sh`

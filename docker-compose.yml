@@ -6,6 +6,9 @@ services:
       context: .
       dockerfile: Dockerfile
     restart: unless-stopped
-    user: "testuser"
+    user: testuser
     ports:
       - '27014:7681'
+    volumes:
+      - ./app:/app
+    command: "ttyd -c testuser:qwer1234 -t rendererType=dom python3 /app/terminal.py"
