@@ -15,7 +15,6 @@ COPY .env .
 COPY scripts/. .
 
 RUN ./ttyd_install.sh
-RUN chmod 777 userspace
 
 RUN apt remove wget -y
 RUN rm *.sh *.txt
