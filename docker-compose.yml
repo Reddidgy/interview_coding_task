@@ -1,7 +1,7 @@
 version: '3.8'
 services:
   app:
-    container_name: 'my_terminal'
+    container_name: 'my_stage_terminal' # todo: change to my_terminal when you will merge it
     build:
       context: .
       dockerfile: Dockerfile
