@@ -1,7 +1,6 @@
 version: '3.8'
 services:
   app:
-    image: "stole-token-sharp-dev-net-app"
     container_name: "my_terminal"
     user: "testuser"
     build:
