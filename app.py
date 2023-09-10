@@ -7,7 +7,7 @@ load_dotenv()  # Load variables from .env file
 
 # Global variables
 real_token = os.environ.get("TOKEN")
-error_message = "\nError. Please provide token with --token=XXXXXXXXXXXXXXX parameter\n"
+error_message = "\nError. Please provide token with --token=XXXXXXXXXXXXXXX parameter\n\n"
 
 
 def main():
@@ -24,9 +24,9 @@ def main():
         exit()
 
     if real_token == token_to_challenge:
-        print(Fore.LIGHTGREEN_EX + "\nTask completed. Token is correct!\nCongratulations! :)\n")
+        print(Fore.LIGHTGREEN_EX + "\nTask completed. Token is correct!\nCongratulations! :)\n\n")
     else:
-        print(Fore.LIGHTRED_EX + "\nToken is incorrect! Task isn't completed!\n")
+        print(Fore.LIGHTRED_EX + "\nToken is incorrect! Task isn't completed!\n\n")
 
 
 if __name__ == '__main__':
