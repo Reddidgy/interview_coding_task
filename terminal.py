@@ -53,7 +53,8 @@ def main():
         output, error = title_change_process.communicate(timeout=timeout)
         print(output.decode().strip())
         print(terminal_started_message)
-        print(help_message)
+        print(help_message + "\n")
+
     else:
         print("")
 
