@@ -2,6 +2,9 @@ import subprocess
 import os
 from dotenv import load_dotenv
 from colorama import Fore, Style, Back
+from pygments import highlight
+from pygments.formatters import TerminalFormatter
+from pygments.lexers import PythonLexer
 
 load_dotenv()  # Load variables from .env file
 
@@ -88,6 +91,9 @@ def main():
                 elif user_command.startswith('cd '):
                     new_dir = user_command.split(' ')[1]
                     os.chdir(new_dir)
+                elif user_command.startswith("cat ") and ".py" in user_command:
+                    # print codeblock colored for user comfort
+                    print(highlight(output.decode(), PythonLexer(), TerminalFormatter()))
                 else:
                     print(output.decode().strip())
         except subprocess.TimeoutExpired:
