@@ -54,6 +54,8 @@ def main():
         print(output.decode().strip())
         print(terminal_started_message)
         print(help_message)
+    else:
+        print("")
 
     while True:
         user = command_with_output("whoami")
