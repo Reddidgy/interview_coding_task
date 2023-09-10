@@ -71,7 +71,7 @@ def main():
                 if apt_command in user_command:
                     user_command += " -y"
 
-        if "ll" in user_command:
+        if user_command.startswith("ll"):
             user_command = user_command.replace("ll", "ls -la")
 
         if "app.py" in user_command and "$" in user_command:
