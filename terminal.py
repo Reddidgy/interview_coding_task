@@ -1,7 +1,7 @@
 import subprocess
 import os
 from dotenv import load_dotenv
-from colorama import Fore, Style
+from colorama import Fore, Style, Back
 
 load_dotenv()  # Load variables from .env file
 
@@ -15,6 +15,13 @@ terminal_title = "Stole Token Task"
 sensitive_info_message = "\nSensitive information is securely protected. Please attempt an alternative approach.\n"
 variables_protection_message = ("\nUtilizing variables in this context is restricted. Kindly employ the actual token "
                                 "value instead.\n")
+terminal_started_message = Fore.LIGHTYELLOW_EX + "\nTerminal initiated!" + Style.RESET_ALL
+help_message = ("\nTo complete the task, execute the command using " \
+                                                                                    "the appropriate token in the " \
+                                                            "following format:\n" + Back.BLACK + Fore.LIGHTWHITE_EX +\
+               "\npython3 app.py --token=XXXXXXXXXXXX\x1b[0m\n\n" + Fore.LIGHTYELLOW_EX +\
+                "Type " + Back.BLACK + Fore.LIGHTWHITE_EX + "help" + Style.RESET_ALL + Fore.LIGHTYELLOW_EX +
+                " anytime to see this message.\n" + Style.RESET_ALL)
 
 
 def command_with_output(command):
@@ -37,19 +44,13 @@ def ubuntu_command(command):
 
 def main():
     global terminal_started
-    if terminal_started:
-        print("")
-    else:
+    if not terminal_started:
         terminal_started = True
         title_change_process = ubuntu_command('echo -ne "\033]0;Stole Token Task\007"')
         output, error = title_change_process.communicate(timeout=timeout)
         print(output.decode().strip())
-
-        print(Fore.LIGHTYELLOW_EX + "Terminal initiated!\n" + Fore.LIGHTGREEN_EX + "To successfully complete the "
-                                                                                   "task, execute the command using "
-                                                                                   "the appropriate token in the "
-                                                                                   "following format:\n" + Fore.CYAN
-              + "python3 app.py --token=XXXXXXXXXXXX\n")
+        print(terminal_started_message)
+        print(help_message)
 
     while True:
         user = command_with_output("whoami")
@@ -69,6 +70,10 @@ def main():
 
         if "app.py" in user_command and "$" in user_command:
             print(Fore.LIGHTRED_EX + variables_protection_message)
+            user_command = ""
+
+        if user_command == "help":
+            print(help_message)
             user_command = ""
 
         process = ubuntu_command(user_command)
